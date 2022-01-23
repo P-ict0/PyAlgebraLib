@@ -28,4 +28,4 @@ Then, on the same terminal you can perform operations like:
 ```python
 efficientAlgebra.karatsuba("364DA","-13F", 16)
 ```
-The output is not formatted yet in a readable way, look into the code for details.
+The output is not formatted yet in a readable way, look into the code for details about this.

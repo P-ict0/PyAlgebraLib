@@ -2,7 +2,7 @@
 
 Python program to perform algebra operations using efficient algorithms like Karatsuba's algorithm for multiplication or Extended Euclidean Algorithm for gcd.
 Can operate with numbers from radix 2 to radix 16. Without converting between radix in each operation. <br> <br>
-_**Each number is represented and returned as a string, except the radix.**_
+_**Each number has to be inputted and will be returned as a string, except the radix.**_
 
 ## Supported operations: 
     

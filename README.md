@@ -1,6 +1,6 @@
 # Efficient algebra
 
-Python program to perform algebra operations using efficient algorithms.
+Python program to perform algebra operations using efficient algorithms like Karatsuba's algorithm for multiplication or Extended Euclidean Algorithm for gcd.
 Can operate with numbers from radix 2 to radix 16. Without converting between radix in each operation.
 
 Supported operations: 

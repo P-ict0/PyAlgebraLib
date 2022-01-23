@@ -15,8 +15,8 @@ _**Each number is represented and returned as a string, except the radix.**_
         - Reduction
         - Addition
         - Subtraction
-        - Inversion
         - Multiplication
+        - Inversion
 
 <hr>
 

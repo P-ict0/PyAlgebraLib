@@ -23,7 +23,7 @@ Run python on the same folder as the program and run
 ```python
 import efficientAlgebra
 ```
-Then, you can perform operations like:
+Then, on the same terminal you can perform operations like:
 ```python
 efficientAlgebra.karatsuba("364DA","-13F", 16)
 ```

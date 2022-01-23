@@ -4,7 +4,7 @@ Python program to perform algebra operations using efficient algorithms like Kar
 Can operate with numbers from radix 2 to radix 16. Without converting between radix in each operation. <br> <br>
 _**Each number is represented and returned as a string, except the radix.**_
 
-Supported operations: 
+## Supported operations: 
     
     - Addition
     - Subtraction 

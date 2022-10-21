@@ -25,12 +25,12 @@ mulCount = 0
 symbols = ['0', '1', '2', '3', '4', '5', '6', '7', '8', '9', 'a', 'b', 'c', 'd', 'e', 'f']
 
 
-def removeLeadingZeros(a):
+def removeLeadingZeros(a: str) -> str:
     """
     removes all leading 0's of a string, ignores any occurrence of '-' (so also removes 0's after '-')
 
-    :param a: (str) Input int
-    :return: (str) Number a without leading 0's
+    :param a: Input int
+    :return: Number a without leading 0's
     """
 
     if len(a) == 0:
@@ -45,13 +45,13 @@ def removeLeadingZeros(a):
     return res
 
 
-def greaterOrEqual(x, y):
+def greaterOrEqual(x:str, y: str) -> bool:
     """
     Returns if x is greater than or equal to y
 
-    :params x,y: (str) Input ints
+    :params x,y: Input ints
     pre: x > 0 and y > 0
-    returns: (bool) x > y
+    returns: x > y
     """
 
     if len(x) > len(y):
@@ -66,14 +66,14 @@ def greaterOrEqual(x, y):
     return False
 
 
-def divide(x, y, r):
+def divide(x: str, y: str, r: int) -> str:
     """
     Divides x by y
 
-    :params x,y: (str) Imput ints
-    :param r: (int) The radix
+    :params x,y: Imput ints
+    :param r The radix
     :pre: r >= 2 and r <= 16
-    :return: (str) x // y in radix r
+    :return: x // y in radix r
     """
 
     q = "-1"
@@ -83,14 +83,14 @@ def divide(x, y, r):
     return q
 
 
-def elementaryAdd(x, y, c, r):
+def elementaryAdd(x: str, y: str, c: str, r: int) -> str:
     """
     Adds x, y and a carry c in radix r. Returns single word result and carry
 
-    :params x,y,c: (char) Input chars
-    :param r: (int) The radix
+    :params x,y,c: Input chars
+    :param r: The radix
     :pre: r >= 2 and r <= 16 and len(x) == 1 and len(y) == 1 and len(c) == 1
-    :return: (str) Rightmost char of x + y + c and (str) the carry in radix r
+    :return: Rightmost char of x + y + c and (str) the carry in radix r
     """
 
     # resulting word
@@ -104,14 +104,14 @@ def elementaryAdd(x, y, c, r):
     return result, carry
 
 
-def elementarySub(x, y, c, r):
+def elementarySub(x: str, y: str, c: str, r: int) -> str:
     """
     Subtracts y and a carry c from x in radix r. Returns single word result and carry
 
-    :params x,y,c: (char) Input chars
-    :param r: (int) The radix
+    :params x,y,c: Input chars
+    :param r: The radix
     :pre: r >= 2 and r <= 16 and len(x) == 1 and len(y) == 1 and len(c) == 1
-    :return: (str) Rightmost char of x - y - c and (str) the carry in radix r
+    :return: Rightmost char of x - y - c and (str) the carry in radix r
     """
 
     # resulting word
@@ -122,14 +122,14 @@ def elementarySub(x, y, c, r):
     return result, carry
 
 
-def elementaryMult(x, y, z, c, r):
+def elementaryMult(x: str, y: str, z: str, c: str, r: int) -> str:
     """
     Multiplies x and y and adds a carry c and the current value of the result z in radix r. Returns single word result and carry
 
-    :params x,y,z,c: (char) Input chars
-    :param r: (int) The radix
+    :params x,y,z,c: Input chars
+    :param r: The radix
     :pre: r >= 2 and r <= 16 and len(x) == 1 and len(y) == 1 and len(c) == 1 and len(z) == 1
-    :return: (str) Rightmost char of x * y + c + z and (str) the carry in radix r
+    :return: Rightmost char of x * y + c + z and (str) the carry in radix r
     """
 
     t = symbols.index(z) + (symbols.index(x) * symbols.index(y)) + symbols.index(c)
@@ -144,14 +144,14 @@ def elementaryMult(x, y, z, c, r):
     return result, carry
 
 
-def add(x, y, r):
+def add(x: str, y: str, r: int) -> str:
     """
     Adds two numbers x and y and returns the result, all represented in radix r
 
-    :params x,y: (str) Input ints
-    :param r: (int) The radix
+    :params x,y: Input ints
+    :param r: The radix
     :pre: r >= 2 and r <= 16 and (negative numbers always start with "-")
-    :return: (str) Result of x + y in radix r
+    :return: Result of x + y in radix r
     """
 
     x = removeLeadingZeros(x)
@@ -200,14 +200,14 @@ def add(x, y, r):
     return removeLeadingZeros(result)
 
 
-def subtract(x, y, r):
+def subtract(x: str, y: str, r:int) -> str:
     """
     Subtracts two numbers x and y and returns the result, all represented in radix r
 
-    :params x,y: (str) Input ints
-    :param r: (int) The radix
+    :params x,y: Input ints
+    :param r: The radix
     :pre: r >= 2 and r <= 16 and (negative numbers always start with "-")
-    :return: (str) Result of x - y in radix r
+    :return: Result of x - y in radix r
     """
 
     x = removeLeadingZeros(x)
@@ -244,14 +244,14 @@ def subtract(x, y, r):
     return removeLeadingZeros(result)
 
 
-def multiply(x, y, r):
+def multiply(x: str, y: str, r: int) -> str:
     """
     Multiplies two numbers x and y and returns the result, all represented in radix r
 
-    :params x,y: (str) Input ints
-    :param r: (int) The radix
+    :params x,y: Input ints
+    :param r: The radix
     :pre: r >= 2 and r <= 16 and (negative numbers always start with "-")
-    :return: (str) Result of x * y in radix r
+    :return: Result of x * y in radix r
     """
 
     x = removeLeadingZeros(x)
@@ -290,14 +290,14 @@ def multiply(x, y, r):
     return removeLeadingZeros(result[-1 * k:])
 
 
-def karatsuba(x, y, r):
+def karatsuba(x: str, y: str, r: int) -> str:
     """
     Multiplies two numbers x and y using karatsubas recursive algorithm and returns the result, all represented in radix r
 
-    :params x,y: (str) Input ints
-    :param r: (int) The radix
+    :params x,y: Input ints
+    :param r: The radix
     :pre: r >= 2 and r <= 16 and (negative numbers always start with "-")
-    :return: (str) Result of x * y in radix r
+    :return: Result of x * y in radix r
     """
 
     x = removeLeadingZeros(x)
@@ -342,15 +342,15 @@ def karatsuba(x, y, r):
     return add(add(ac + (symbols[0] * (2 * splitLength)), ad_Plus_bc + (symbols[0] * splitLength), r), bd, r)
 
 
-def extEuclid(x, y, radix):
+def extEuclid(x: str, y: str, r: int) -> str:
     """
     Calculates the greatest common divisor d of the number x and y
     returns gcd(x,y) and values a and b, such that d = ax + by
 
-    :params x,y: (str) Input ints
-    :param radix: (int) The radix
+    :params x,y: Input ints
+    :param r: The radix
     :pre: r >= 2 and r <= 16 and (negative numbers always start with "-")
-    :return: (str) Result of gcd(x,y), (str) a, (str) b such that gcd(x,y) = ax + by all in radix r
+    :return: Result of gcd(x,y), (str) a, (str) b such that gcd(x,y) = ax + by all in radix r
     """
 
     x = removeLeadingZeros(x)
@@ -376,14 +376,14 @@ def extEuclid(x, y, radix):
     # use the rule gcd(a,b) = gcd(a-qb, b), as the set of common divisors is invariant
     # stop if b becomes negative, such that gcd(a, b) = gcd(a, 0) = a
     while greaterOrEqual(b, "1"):
-        q = divide(a, b, radix)
-        r = subtract(a, multiply(q, b, radix), radix)
+        q = divide(a, b, r)
+        r = subtract(a, multiply(q, b, r), r)
 
         a = b
         b = r
 
-        x3 = subtract(x1, multiply(q, x2, radix), radix)
-        y3 = subtract(y1, multiply(q, y2, radix), radix)
+        x3 = subtract(x1, multiply(q, x2, r), r)
+        y3 = subtract(y1, multiply(q, y2, r), r)
 
         x1 = x2
         y1 = y2
@@ -411,14 +411,14 @@ def extEuclid(x, y, radix):
     return result, x, y
 
 
-def modularReduction(n, m, r):
+def modularReduction(n: str, m: str, r: int) -> str:
     """
     Returns n mod m, in radix r
 
-    :params n,m: (str) Input ints
-    :param r: (int) The radix
+    :params n,m: Input ints
+    :param r: The radix
     :pre: r >= 2 and r <= 16 and m > 0
-    :return: (str) Result of n % m in radix r
+    :return: Result of n % m in radix r
     """
 
     n = removeLeadingZeros(n)
@@ -440,14 +440,14 @@ def modularReduction(n, m, r):
     return removeLeadingZeros(subtract(m, n, r))
 
 
-def modularAddition(x, y, m, r):
+def modularAddition(x: str, y: str, m: str, r: int) -> str:
     """
     Returns z = x + y (mod m)
 
-    :params x,y,m: (str) Input ints
-    :param r: (int) The radix
+    :params x,y,m: Input ints
+    :param r: The radix
     :pre: r >= 2 and r <= 16 and m > 0 and (x and y are already in reduced form)
-    :return: (str) Result of x + y (mod m) in radix r
+    :return: Result of x + y (mod m) in radix r
     """
 
     z = add(x, y, r)
@@ -456,14 +456,14 @@ def modularAddition(x, y, m, r):
     return z
 
 
-def modularSubtraction(x, y, m, r):
+def modularSubtraction(x: str, y: str, m: str, r: int) -> str:
     '''
     Returns z = x - y (mod m)
     
-    :params x,y,m: (str) Input ints
-    :param r: (int) The radix
+    :params x,y,m: Input ints
+    :param r: The radix
     :pre: r >= 2 and r <= 16 and m > 0 and (x and y are already in reduced form)
-    :return: (str) Result of x - y (mod m) in radix r
+    :return: Result of x - y (mod m) in radix r
     '''
 
     z = subtract(x, y, r)
@@ -473,7 +473,7 @@ def modularSubtraction(x, y, m, r):
     return z
 
 
-def modularMultiplication(x, y, m, r):
+def modularMultiplication(x: str, y: str, m: str, r: int) -> str:
     """
     Returns z = x * y (mod m)
 
@@ -488,7 +488,7 @@ def modularMultiplication(x, y, m, r):
     return z
 
 
-def modularInversion(a, m, r):
+def modularInversion(a: str, m: str, r: int) -> str:
     """
     Returns a^(-1) (mod m) if it exists
 

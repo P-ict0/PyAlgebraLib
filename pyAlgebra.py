@@ -15,9 +15,9 @@ Supported operations:
         - Inversion
         - Multiplication
 
-Author: Rodrigo Martín Núñez (Technical University of Eindhoven Student)
+Author: Rodrigo Martín Núñez
 
-Date: 2021-2022
+Date: 2021-2024
 """
 
 addCount = 0
@@ -44,53 +44,70 @@ symbols = [
 
 def removeLeadingZeros(a: str) -> str:
     """
-    removes all leading 0's of a string, ignores any occurrence of '-' (so also removes 0's after '-')
+    Removes all leading zeros from a given string. The function treats the '-' character
+    specially, ignoring its presence and continuing to remove zeros that appear after it.
 
-    :param a: Input int
-    :return: Number a without leading 0's
+    Parameters:
+        a (str): The string from which leading zeros are to be removed.
+
+    Returns:
+        str: The modified string with all leading zeros removed, regardless of the position of '-'.
     """
 
-    if len(a) == 0:
+    if not a:
         return "0"
-    res = ""
+
+    # Check if the string represents a negative number
     if a[0] == "-":
         res = "-" + a[1:].lstrip("0")
     else:
         res = a.lstrip("0")
-    if len(res) == 0:
-        res = "0"
-    return res
+
+    # If the result is an empty string, return "0"
+    return res if res else "0"
 
 
 def greaterOrEqual(x: str, y: str) -> bool:
     """
-    Returns if x is greater than or equal to y
+    Compares two strings based on a custom ordering defined in the string 'symbols'.
 
-    :params x,y: Input ints
-    pre: x > 0 and y > 0
-    returns: x > y
+    Parameters:
+        x (str): First string to compare.
+        y (str): Second string to compare.
+
+    Returns:
+        bool: True if x is greater than or equal to y based on the 'symbols' order, False otherwise.
     """
-
+    # Comparing by length and lexicographical order based on 'symbols'
     if len(x) > len(y):
         return True
-    elif len(x) == len(y):
+    elif len(x) < len(y):
+        return False
+    else:
+        # Compare character by character according to the custom order
         for i in range(len(x)):
             if symbols.index(x[i]) > symbols.index(y[i]):
                 return True
-            if symbols.index(x[i]) < symbols.index(y[i]):
+            elif symbols.index(x[i]) < symbols.index(y[i]):
                 return False
+        # If all characters are equal
         return True
-    return False
 
 
 def divide(x: str, y: str, r: int) -> str:
     """
-    Divides x by y
+    Divides one integer by another (both as str) and returns the quotient in the specified radix.
 
-    :params x,y: Imput ints
-    :param r The radix
-    :pre: r >= 2 and r <= 16
-    :return: x // y in radix r
+    Parameters:
+        x (str): The dividend.
+        y (str): The divisor.
+        r (int): The radix in which to express the quotient. Must be between 2 and 16, inclusive.
+
+    Preconditions:
+        r must be at least 2 and no more than 16.
+
+    Returns:
+        str: The quotient of x divided by y, expressed in radix r.
     """
 
     q = "-1"
@@ -102,12 +119,21 @@ def divide(x: str, y: str, r: int) -> str:
 
 def elementaryAdd(x: str, y: str, c: str, r: int) -> str:
     """
-    Adds x, y and a carry c in radix r. Returns single word result and carry
+    Adds two single-character numbers and a carry character in a specified radix and returns the
+    rightmost character of the result along with the carry.
 
-    :params x,y,c: Input chars
-    :param r: The radix
-    :pre: r >= 2 and r <= 16 and len(x) == 1 and len(y) == 1 and len(c) == 1
-    :return: Rightmost char of x + y + c and (str) the carry in radix r
+    Parameters:
+        x (str): The first number as a single character.
+        y (str): The second number as a single character.
+        c (str): The carry as a single character.
+        r (int): The radix in which the addition is performed, must be between 2 and 16.
+
+    Preconditions:
+        - `r` must be between 2 and 16.
+        - `x`, `y`, and `c` must each be one character long.
+
+    Returns:
+        tuple: (result, carry)
     """
 
     # resulting word
@@ -123,12 +149,21 @@ def elementaryAdd(x: str, y: str, c: str, r: int) -> str:
 
 def elementarySub(x: str, y: str, c: str, r: int) -> str:
     """
-    Subtracts y and a carry c from x in radix r. Returns single word result and carry
+    Subtracts y and a carry c from x in a specified radix and returns the rightmost character
+    of the result along with the carry.
 
-    :params x,y,c: Input chars
-    :param r: The radix
-    :pre: r >= 2 and r <= 16 and len(x) == 1 and len(y) == 1 and len(c) == 1
-    :return: Rightmost char of x - y - c and (str) the carry in radix r
+    Parameters:
+        x (str): The minuend as a single character.
+        y (str): The subtrahend as a single character.
+        c (str): The carry (or borrow) as a single character.
+        r (int): The radix in which the subtraction is performed, must be between 2 and 16.
+
+    Preconditions:
+        - `r` must be between 2 and 16.
+        - `x`, `y`, and `c` must each be one character long.
+
+    Returns:
+        tuple: (result, carry)
     """
 
     # resulting word
@@ -141,12 +176,23 @@ def elementarySub(x: str, y: str, c: str, r: int) -> str:
 
 def elementaryMult(x: str, y: str, z: str, c: str, r: int) -> str:
     """
-    Multiplies x and y and adds a carry c and the current value of the result z in radix r. Returns single word result and carry
+    Multiplies two single-character numbers x and y, adds a single-character carry c,
+    and the current single-character result z, all in a specified radix. Returns the
+    rightmost character of the result along with the carry.
 
-    :params x,y,z,c: Input chars
-    :param r: The radix
-    :pre: r >= 2 and r <= 16 and len(x) == 1 and len(y) == 1 and len(c) == 1 and len(z) == 1
-    :return: Rightmost char of x * y + c + z and (str) the carry in radix r
+    Parameters:
+        x (str): The first multiplier as a single character.
+        y (str): The second multiplier as a single character.
+        z (str): The current result value as a single character.
+        c (str): The carry as a single character.
+        r (int): The radix in which the operations are performed, must be between 2 and 16.
+
+    Preconditions:
+        - `r` must be between 2 and 16.
+        - `x`, `y`, `z`, and `c` must each be one character long.
+
+    Returns:
+        tuple: (result, carry)
     """
 
     t = symbols.index(z) + (symbols.index(x) * symbols.index(y)) + symbols.index(c)
@@ -163,12 +209,19 @@ def elementaryMult(x: str, y: str, z: str, c: str, r: int) -> str:
 
 def add(x: str, y: str, r: int) -> str:
     """
-    Adds two numbers x and y and returns the result, all represented in radix r
+    Adds two numbers represented as strings in a specified radix and returns the resulting sum as a string.
 
-    :params x,y: Input ints
-    :param r: The radix
-    :pre: r >= 2 and r <= 16 and (negative numbers always start with "-")
-    :return: Result of x + y in radix r
+    Parameters:
+        x (str): The first number as a string in radix r.
+        y (str): The second number as a string in radix r.
+        r (int): The radix in which the numbers are expressed and the addition is performed, must be between 2 and 16.
+
+    Preconditions:
+        - `r` must be between 2 and 16.
+        - Negative numbers are represented by a leading '-' character.
+
+    Returns:
+        str: result of x+y in radix r.
     """
 
     x = removeLeadingZeros(x)
@@ -219,12 +272,19 @@ def add(x: str, y: str, r: int) -> str:
 
 def subtract(x: str, y: str, r: int) -> str:
     """
-    Subtracts two numbers x and y and returns the result, all represented in radix r
+     Subtracts two numbers represented as strings in a specified radix and returns the resulting sum as a string.
 
-    :params x,y: Input ints
-    :param r: The radix
-    :pre: r >= 2 and r <= 16 and (negative numbers always start with "-")
-    :return: Result of x - y in radix r
+     Parameters:
+         x (str): The first number as a string in radix r.
+         y (str): The second number as a string in radix r.
+         r (int): The radix in which the numbers are expressed and the subtraction is performed, must be between 2 and 16.
+
+     Preconditions:
+         - `r` must be between 2 and 16.
+         - Negative numbers are represented by a leading '-' character.
+
+    Returns:
+         str: result of x-y in radix r.
     """
 
     x = removeLeadingZeros(x)
@@ -263,12 +323,19 @@ def subtract(x: str, y: str, r: int) -> str:
 
 def multiply(x: str, y: str, r: int) -> str:
     """
-    Multiplies two numbers x and y and returns the result, all represented in radix r
+    Multiplies two numbers represented as strings in a specified radix and returns the product as a string.
 
-    :params x,y: Input ints
-    :param r: The radix
-    :pre: r >= 2 and r <= 16 and (negative numbers always start with "-")
-    :return: Result of x * y in radix r
+    Parameters:
+        x (str): The first number as a string, in radix r.
+        y (str): The second number as a string, in radix r.
+        r (int): The radix in which the numbers are expressed and the multiplication is performed, must be between 2 and 16.
+
+    Preconditions:
+        - `r` must be between 2 and 16.
+        - Negative numbers are represented by a leading '-' character.
+
+    Returns:
+        str: Result of x*y in radix r.
     """
 
     x = removeLeadingZeros(x)
@@ -315,12 +382,20 @@ def multiply(x: str, y: str, r: int) -> str:
 
 def karatsuba(x: str, y: str, r: int) -> str:
     """
-    Multiplies two numbers x and y using karatsubas recursive algorithm and returns the result, all represented in radix r
+    Multiplies two numbers x and y using Karatsuba's recursive algorithm and returns the result,
+    all represented in a specified radix.
 
-    :params x,y: Input ints
-    :param r: The radix
-    :pre: r >= 2 and r <= 16 and (negative numbers always start with "-")
-    :return: Result of x * y in radix r
+    Parameters:
+        x (str): The first number as a string, in radix r.
+        y (str): The second number as a string, in radix r.
+        r (int): The radix in which the numbers are expressed and the multiplication is performed, must be between 2 and 16.
+
+    Preconditions:
+        - `r` must be between 2 and 16.
+        - Negative numbers are represented by a leading '-' character.
+
+    Returns:
+        str: Result of x*y in radix r.
     """
 
     x = removeLeadingZeros(x)
@@ -375,15 +450,22 @@ def karatsuba(x: str, y: str, r: int) -> str:
     )
 
 
-def extEuclid(x: str, y: str, r: int) -> str:
+def extEuclid(x: str, y: str, r: int) -> tuple[str, str, str]:
     """
-    Calculates the greatest common divisor d of the number x and y
-    returns gcd(x,y) and values a and b, such that d = ax + by
+    Calculates the greatest common divisor (gcd) of two numbers x and y using the Extended Euclidean Algorithm,
+    and finds coefficients a and b such that gcd(x, y) = ax + by. All values are represented in a specified radix.
 
-    :params x,y: Input ints
-    :param r: The radix
-    :pre: r >= 2 and r <= 16 and (negative numbers always start with "-")
-    :return: Result of gcd(x,y), (str) a, (str) b such that gcd(x,y) = ax + by all in radix r
+    Parameters:
+        x (str): The first number as a string, in radix r.
+        y (str): The second number as a string, in radix r.
+        r (int): The radix in which the numbers are expressed and calculations are performed, must be between 2 and 16.
+
+    Preconditions:
+        - `r` must be between 2 and 16.
+        - Negative numbers are represented by a leading '-' character.
+
+    Returns:
+        tuple: (gcd(x,y), a, b) in radix r. Where gcd(x,y) = ax + by.
     """
 
     x = removeLeadingZeros(x)
@@ -425,9 +507,8 @@ def extEuclid(x: str, y: str, r: int) -> str:
 
     result = a
 
-    #
+    # x is positive
     if greaterOrEqual(x, "0"):
-
         x = x1
     # remove '-' sign
     else:
@@ -446,12 +527,19 @@ def extEuclid(x: str, y: str, r: int) -> str:
 
 def modularReduction(n: str, m: str, r: int) -> str:
     """
-    Returns n mod m, in radix r
+    Computes the reduction of a number n modulo m in a specified radix.
 
-    :params n,m: Input ints
-    :param r: The radix
-    :pre: r >= 2 and r <= 16 and m > 0
-    :return: Result of n % m in radix r
+    Parameters:
+        n (str): The dividend as a string in radix r.
+        m (str): The divisor as a string in radix r, must be greater than zero.
+        r (int): The radix in which the numbers are expressed and the operation is performed, must be between 2 and 16.
+
+    Preconditions:
+        - `r` must be between 2 and 16.
+        - `m` must be greater than zero.
+
+    Returns:
+        str: Result of n mod m in radix r.
     """
 
     n = removeLeadingZeros(n)
@@ -475,12 +563,21 @@ def modularReduction(n: str, m: str, r: int) -> str:
 
 def modularAddition(x: str, y: str, m: str, r: int) -> str:
     """
-    Returns z = x + y (mod m)
+    Computes the sum of two numbers x and y, modulo m, all represented in a specified radix.
 
-    :params x,y,m: Input ints
-    :param r: The radix
-    :pre: r >= 2 and r <= 16 and m > 0 and (x and y are already in reduced form)
-    :return: Result of x + y (mod m) in radix r
+    Parameters:
+        x (str): The first addend as a string, in radix r, assumed to be already reduced modulo m.
+        y (str): The second addend as a string, in radix r, assumed to be already reduced modulo m.
+        m (str): The modulus as a string in radix r, must be greater than zero.
+        r (int): The radix in which the numbers are expressed and the operation is performed, must be between 2 and 16.
+
+    Preconditions:
+        - `r` must be between 2 and 16.
+        - `m` must be greater than zero.
+        - `x` and `y` should already be in reduced form modulo m.
+
+    Returns:
+        str: The result of (x + y) modulo m, in radix r.
     """
 
     z = add(x, y, r)
@@ -491,12 +588,21 @@ def modularAddition(x: str, y: str, m: str, r: int) -> str:
 
 def modularSubtraction(x: str, y: str, m: str, r: int) -> str:
     """
-    Returns z = x - y (mod m)
+    Computes the subtraction of two numbers x and y, modulo m, all represented in a specified radix.
 
-    :params x,y,m: Input ints
-    :param r: The radix
-    :pre: r >= 2 and r <= 16 and m > 0 and (x and y are already in reduced form)
-    :return: Result of x - y (mod m) in radix r
+    Parameters:
+        x (str): As string, in radix r, assumed to be already reduced modulo m.
+        y (str): As a string, in radix r, assumed to be already reduced modulo m.
+        m (str): The modulus as a string in radix r, must be greater than zero.
+        r (int): The radix in which the numbers are expressed and the operation is performed, must be between 2 and 16.
+
+    Preconditions:
+        - `r` must be between 2 and 16.
+        - `m` must be greater than zero.
+        - `x` and `y` should already be in reduced form modulo m.
+
+    Returns:
+        str: The result of (x - y) modulo m, in radix r.
     """
 
     z = subtract(x, y, r)
@@ -508,12 +614,21 @@ def modularSubtraction(x: str, y: str, m: str, r: int) -> str:
 
 def modularMultiplication(x: str, y: str, m: str, r: int) -> str:
     """
-    Returns z = x * y (mod m)
+    Computes the product of two numbers x and y, modulo m, all represented in a specified radix.
 
-    :params x,y,m: (str) Input ints
-    :param r: (int) The radix
-    :pre: r >= 2 and r <= 16 and m > 0 and (x and y are already in reduced form)
-    :return: (str) Result of x * y (mod m) in radix r
+    Parameters:
+        x (str): The first factor as a string, in radix r, assumed to be already reduced modulo m.
+        y (str): The second factor as a string, in radix r, assumed to be already reduced modulo m.
+        m (str): The modulus as a string in radix r, must be greater than zero.
+        r (int): The radix in which the numbers are expressed and the operation is performed, must be between 2 and 16.
+
+    Preconditions:
+        - `r` must be between 2 and 16.
+        - `m` must be greater than zero.
+        - Both `x` and `y` should already be in reduced form modulo m.
+
+    Returns:
+        str: The result of (x * y) modulo m, in radix r.
     """
 
     z = multiply(x, y, r)
@@ -523,12 +638,20 @@ def modularMultiplication(x: str, y: str, m: str, r: int) -> str:
 
 def modularInversion(a: str, m: str, r: int) -> str:
     """
-    Returns a^(-1) (mod m) if it exists
+    Computes the modular inverse of a modulo m, if it exists.
 
-    :params a,m: (str) Input ints
-    :param r: (int) The radix
-    :pre: r >= 2 and r <= 16 and m > 0
-    :return: (str) Result of a^(-1) (mod m) if it exists or (srt) "Inverse does not exist" if it doesnt exist
+    Parameters:
+        a (str): The number whose inverse is to be computed, as a string in radix r.
+        m (str): The modulus as a string in radix r, must be greater than zero.
+        r (int): The radix in which the numbers are expressed and the operation is performed, must be between 2 and 16.
+
+    Preconditions:
+        - `r` must be between 2 and 16.
+        - `m` must be greater than zero.
+
+    Returns:
+        str: If the inverse exists, the result of a^-1 mod m in radix r.
+            Otherwise, prints "Inverse does not exist".
     """
 
     originalModulo = m
@@ -553,7 +676,3 @@ def modularInversion(a: str, m: str, r: int) -> str:
         return x1
     else:
         print("Inverse does not exist")
-
-
-if __name__ == "__main__":
-    extEuclid("1", "d", 7)

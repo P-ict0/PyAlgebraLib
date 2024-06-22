@@ -3,7 +3,7 @@ requires = ["setuptools"]
 build-backend = "setuptools.build_meta"
 
 [project]
-name = "pyAlgebra"
+name = "AlgebraPy"
 version = "1.1.0"
 description = "Simple and native python program to perform algebra operations using the most efficient algorithms."
 readme = "README.md"
@@ -27,5 +27,5 @@ classifiers = [
 ]
 
 [project.urls]
-"Homepage" = "https://github.com/P-ict0/PyAlgebra.git"
-"Bug Reports" = "https://github.com/P-ict0/PyAlgebra/issues"
+"Homepage" = "https://github.com/P-ict0/AlgebraPy.git"
+"Bug Reports" = "https://github.com/P-ict0/AlgebraPy/issues"

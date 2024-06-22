@@ -4,15 +4,17 @@
 
 - [😁 Welcome!!](#-welcome)
 - [Contents](#contents)
-- [🧮 PyAlgebra](#-pyalgebra)
+- [🧮 AlgebraPy](#-algebrapy)
 - [✨ Features](#-features)
 - [📜 Supported operations:](#-supported-operations)
 - [📦 Installation and Usage](#-installation-and-usage)
 
 
-# 🧮 PyAlgebra
+# 🧮 AlgebraPy
 
-Python program to perform algebra operations using efficient algorithms like Karatsuba's algorithm for multiplication or Extended Euclidean Algorithm for great common divisor (GCD).
+Simple Python program to perform algebra operations using efficient algorithms like Karatsuba's algorithm for multiplication or Extended Euclidean Algorithm for great common divisor (GCD).
+
+This program is intended to be lighweight (no dependencies) and very efficient.
 
 # ✨ Features
 
@@ -38,26 +40,22 @@ Note: _**Each number has to be inputted and will be returned as a string, except
 
 # 📦 Installation and Usage
 
-Requirements:
-```
-git python
+```bash
+pip install AlgebraPy
 ```
 
-```bash
-# Clone in same folder as your project
-git clone https://github.com/P-ict0/PyAlgebra.git /path/to/your/project
-```
-In your project, you can import the module:
+You can import the module:
 ```python
-import pyAlgebra as pa
+import AlgebraPy as ap
 ```
+
 Then, you can perform operations like:
 ```python
 pa.karatsuba("364da","-13f", 16)      # Multiplication (karatsuba algorithm)
 pa.extEuclid("-1460","44321521", 7)   # GCD (Extended)
 ```
 
-The output is a tuple with the result(s) and the base of the result(s), look into the code for more information.
+The output is either a string or a tuple with the result(s), look into the specific function docstrings for more information.
 
 Example:
 ```python

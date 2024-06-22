@@ -4,8 +4,8 @@ build-backend = "setuptools.build_meta"
 
 [project]
 name = "pyAlgebra"
-version = "1.0.0"
-description = "All-native python program to perform algebra operations using the most efficient algorithms"
+version = "1.1.0"
+description = "Simple and native python program to perform algebra operations using the most efficient algorithms."
 readme = "README.md"
 requires-python = ">=3.10"
 authors = [

@@ -25,7 +25,7 @@ pip install PyAlgebraLib
 
 You can import the module:
 ```python
-import PyAlgebraLib as ap
+import PyAlgebraLib as pa
 ```
 
 # ✨ Features

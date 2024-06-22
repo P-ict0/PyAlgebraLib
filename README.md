@@ -4,14 +4,14 @@
 
 - [😁 Welcome!!](#-welcome)
 - [Contents](#contents)
-- [🧮 AlgebraPy](#-algebrapy)
+- [🧮 PyAlgebraLib](#-pyalgebralib)
 - [🚀 Quick start](#-quick-start)
 - [✨ Features](#-features)
 - [📦 Installation and Usage](#-installation-and-usage)
 - [📜 Supported operations:](#-supported-operations)
 
 
-# 🧮 AlgebraPy
+# 🧮 PyAlgebraLib
 
 Simple Python program to perform algebra operations using efficient algorithms like Karatsuba's algorithm for multiplication or Extended Euclidean Algorithm for great common divisor (GCD).
 
@@ -20,12 +20,12 @@ This program is intended to be lighweight (no dependencies) and very efficient.
 # 🚀 Quick start
 
 ```bash
-pip install AlgebraPy
+pip install PyAlgebraLib
 ```
 
 You can import the module:
 ```python
-import AlgebraPy as ap
+import PyAlgebraLib as ap
 ```
 
 # ✨ Features
@@ -37,12 +37,12 @@ Note: _**Each number has to be inputted and will be returned as a string, except
 # 📦 Installation and Usage
 
 ```bash
-pip install AlgebraPy
+pip install PyAlgebraLib
 ```
 
 You can import the module:
 ```python
-import AlgebraPy as ap
+import PyAlgebraLib as ap
 ```
 
 Then, you can perform operations like:

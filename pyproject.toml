@@ -1,0 +1,31 @@
+[build-system]
+requires = ["setuptools"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "pyAlgebra"
+version = "1.0.0"
+description = "All-native python program to perform algebra operations using the most efficient algorithms"
+readme = "README.md"
+requires-python = ">=3.10"
+authors = [
+    { name = "Rodrigo Martin Núñez", email = "rodrigomartinnunez@gmail.com" }
+]
+maintainers = [
+    { name = "Rodrigo Martin Núñez", email = "rodrigomartinnunez@gmail.com" }
+]
+license = { file = "LICENSE" }
+keywords = ["algebra", "math", "development", "library", "algorithms"]
+classifiers = [
+  "Development Status :: 3 - Alpha",
+  "Intended Audience :: Developers",
+  "Topic :: Software Development :: Build Tools",
+  "License :: OSI Approved :: GNU General Public License v3 (GPLv3)",
+  "Programming Language :: Python :: 3",
+  "Programming Language :: Python :: 3.10",
+  "Programming Language :: Python :: 3.11",
+]
+
+[project.urls]
+"Homepage" = "https://github.com/P-ict0/PyAlgebra.git"
+"Bug Reports" = "https://github.com/P-ict0/PyAlgebra/issues"

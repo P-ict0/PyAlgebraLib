@@ -94,7 +94,7 @@ def greaterOrEqual(x: str, y: str) -> bool:
         return True
 
 
-def divide(x: str, y: str, r: int) -> str:
+def divide(x: str, y: str, r: int = 10) -> str:
     """
     Divides one integer by another (both as str) and returns the quotient in the specified radix.
 
@@ -102,6 +102,7 @@ def divide(x: str, y: str, r: int) -> str:
         x (str): The dividend.
         y (str): The divisor.
         r (int): The radix in which to express the quotient. Must be between 2 and 16, inclusive.
+                    Default is 10.
 
     Preconditions:
         r must be at least 2 and no more than 16.
@@ -117,7 +118,7 @@ def divide(x: str, y: str, r: int) -> str:
     return q
 
 
-def elementaryAdd(x: str, y: str, c: str, r: int) -> str:
+def elementaryAdd(x: str, y: str, c: str, r: int = 10) -> str:
     """
     Adds two single-character numbers and a carry character in a specified radix and returns the
     rightmost character of the result along with the carry.
@@ -127,6 +128,7 @@ def elementaryAdd(x: str, y: str, c: str, r: int) -> str:
         y (str): The second number as a single character.
         c (str): The carry as a single character.
         r (int): The radix in which the addition is performed, must be between 2 and 16.
+                    Default is 10.
 
     Preconditions:
         - `r` must be between 2 and 16.
@@ -147,7 +149,7 @@ def elementaryAdd(x: str, y: str, c: str, r: int) -> str:
     return result, carry
 
 
-def elementarySub(x: str, y: str, c: str, r: int) -> str:
+def elementarySub(x: str, y: str, c: str, r: int = 10) -> str:
     """
     Subtracts y and a carry c from x in a specified radix and returns the rightmost character
     of the result along with the carry.
@@ -157,6 +159,7 @@ def elementarySub(x: str, y: str, c: str, r: int) -> str:
         y (str): The subtrahend as a single character.
         c (str): The carry (or borrow) as a single character.
         r (int): The radix in which the subtraction is performed, must be between 2 and 16.
+                    Default is 10.
 
     Preconditions:
         - `r` must be between 2 and 16.
@@ -174,7 +177,7 @@ def elementarySub(x: str, y: str, c: str, r: int) -> str:
     return result, carry
 
 
-def elementaryMult(x: str, y: str, z: str, c: str, r: int) -> str:
+def elementaryMult(x: str, y: str, z: str, c: str, r: int = 10) -> str:
     """
     Multiplies two single-character numbers x and y, adds a single-character carry c,
     and the current single-character result z, all in a specified radix. Returns the
@@ -186,6 +189,7 @@ def elementaryMult(x: str, y: str, z: str, c: str, r: int) -> str:
         z (str): The current result value as a single character.
         c (str): The carry as a single character.
         r (int): The radix in which the operations are performed, must be between 2 and 16.
+                    Default is 10.
 
     Preconditions:
         - `r` must be between 2 and 16.
@@ -207,7 +211,7 @@ def elementaryMult(x: str, y: str, z: str, c: str, r: int) -> str:
     return result, carry
 
 
-def add(x: str, y: str, r: int) -> str:
+def add(x: str, y: str, r: int = 10) -> str:
     """
     Adds two numbers represented as strings in a specified radix and returns the resulting sum as a string.
 
@@ -215,6 +219,7 @@ def add(x: str, y: str, r: int) -> str:
         x (str): The first number as a string in radix r.
         y (str): The second number as a string in radix r.
         r (int): The radix in which the numbers are expressed and the addition is performed, must be between 2 and 16.
+                    Default is 10.
 
     Preconditions:
         - `r` must be between 2 and 16.
@@ -270,7 +275,7 @@ def add(x: str, y: str, r: int) -> str:
     return removeLeadingZeros(result)
 
 
-def subtract(x: str, y: str, r: int) -> str:
+def subtract(x: str, y: str, r: int = 10) -> str:
     """
      Subtracts two numbers represented as strings in a specified radix and returns the resulting sum as a string.
 
@@ -278,6 +283,7 @@ def subtract(x: str, y: str, r: int) -> str:
          x (str): The first number as a string in radix r.
          y (str): The second number as a string in radix r.
          r (int): The radix in which the numbers are expressed and the subtraction is performed, must be between 2 and 16.
+                     Default is 10.
 
      Preconditions:
          - `r` must be between 2 and 16.
@@ -321,7 +327,7 @@ def subtract(x: str, y: str, r: int) -> str:
     return removeLeadingZeros(result)
 
 
-def multiply(x: str, y: str, r: int) -> str:
+def multiply(x: str, y: str, r: int = 10) -> str:
     """
     Multiplies two numbers represented as strings in a specified radix and returns the product as a string.
 
@@ -329,6 +335,7 @@ def multiply(x: str, y: str, r: int) -> str:
         x (str): The first number as a string, in radix r.
         y (str): The second number as a string, in radix r.
         r (int): The radix in which the numbers are expressed and the multiplication is performed, must be between 2 and 16.
+                    Default is 10.
 
     Preconditions:
         - `r` must be between 2 and 16.
@@ -380,7 +387,7 @@ def multiply(x: str, y: str, r: int) -> str:
     return removeLeadingZeros(result[-1 * k :])
 
 
-def karatsuba(x: str, y: str, r: int) -> str:
+def karatsuba(x: str, y: str, r: int = 10) -> str:
     """
     Multiplies two numbers x and y using Karatsuba's recursive algorithm and returns the result,
     all represented in a specified radix.
@@ -389,6 +396,7 @@ def karatsuba(x: str, y: str, r: int) -> str:
         x (str): The first number as a string, in radix r.
         y (str): The second number as a string, in radix r.
         r (int): The radix in which the numbers are expressed and the multiplication is performed, must be between 2 and 16.
+                    Default is 10.
 
     Preconditions:
         - `r` must be between 2 and 16.
@@ -450,7 +458,7 @@ def karatsuba(x: str, y: str, r: int) -> str:
     )
 
 
-def extEuclid(x: str, y: str, r: int) -> tuple[str, str, str]:
+def extEuclid(x: str, y: str, r: int = 10) -> tuple[str, str, str]:
     """
     Calculates the greatest common divisor (gcd) of two numbers x and y using the Extended Euclidean Algorithm,
     and finds coefficients a and b such that gcd(x, y) = ax + by. All values are represented in a specified radix.
@@ -459,6 +467,7 @@ def extEuclid(x: str, y: str, r: int) -> tuple[str, str, str]:
         x (str): The first number as a string, in radix r.
         y (str): The second number as a string, in radix r.
         r (int): The radix in which the numbers are expressed and calculations are performed, must be between 2 and 16.
+                    Default is 10.
 
     Preconditions:
         - `r` must be between 2 and 16.
@@ -525,7 +534,7 @@ def extEuclid(x: str, y: str, r: int) -> tuple[str, str, str]:
     return result, x, y
 
 
-def modularReduction(n: str, m: str, r: int) -> str:
+def modularReduction(n: str, m: str, r: int = 10) -> str:
     """
     Computes the reduction of a number n modulo m in a specified radix.
 
@@ -533,6 +542,7 @@ def modularReduction(n: str, m: str, r: int) -> str:
         n (str): The dividend as a string in radix r.
         m (str): The divisor as a string in radix r, must be greater than zero.
         r (int): The radix in which the numbers are expressed and the operation is performed, must be between 2 and 16.
+                    Default is 10.
 
     Preconditions:
         - `r` must be between 2 and 16.
@@ -561,7 +571,7 @@ def modularReduction(n: str, m: str, r: int) -> str:
     return removeLeadingZeros(subtract(m, n, r))
 
 
-def modularAddition(x: str, y: str, m: str, r: int) -> str:
+def modularAddition(x: str, y: str, m: str, r: int = 10) -> str:
     """
     Computes the sum of two numbers x and y, modulo m, all represented in a specified radix.
 
@@ -570,6 +580,7 @@ def modularAddition(x: str, y: str, m: str, r: int) -> str:
         y (str): The second addend as a string, in radix r, assumed to be already reduced modulo m.
         m (str): The modulus as a string in radix r, must be greater than zero.
         r (int): The radix in which the numbers are expressed and the operation is performed, must be between 2 and 16.
+                    Default is 10.
 
     Preconditions:
         - `r` must be between 2 and 16.
@@ -586,7 +597,7 @@ def modularAddition(x: str, y: str, m: str, r: int) -> str:
     return z
 
 
-def modularSubtraction(x: str, y: str, m: str, r: int) -> str:
+def modularSubtraction(x: str, y: str, m: str, r: int = 10) -> str:
     """
     Computes the subtraction of two numbers x and y, modulo m, all represented in a specified radix.
 
@@ -595,6 +606,7 @@ def modularSubtraction(x: str, y: str, m: str, r: int) -> str:
         y (str): As a string, in radix r, assumed to be already reduced modulo m.
         m (str): The modulus as a string in radix r, must be greater than zero.
         r (int): The radix in which the numbers are expressed and the operation is performed, must be between 2 and 16.
+                    Default is 10.
 
     Preconditions:
         - `r` must be between 2 and 16.
@@ -612,7 +624,7 @@ def modularSubtraction(x: str, y: str, m: str, r: int) -> str:
     return z
 
 
-def modularMultiplication(x: str, y: str, m: str, r: int) -> str:
+def modularMultiplication(x: str, y: str, m: str, r: int = 10) -> str:
     """
     Computes the product of two numbers x and y, modulo m, all represented in a specified radix.
 
@@ -621,6 +633,7 @@ def modularMultiplication(x: str, y: str, m: str, r: int) -> str:
         y (str): The second factor as a string, in radix r, assumed to be already reduced modulo m.
         m (str): The modulus as a string in radix r, must be greater than zero.
         r (int): The radix in which the numbers are expressed and the operation is performed, must be between 2 and 16.
+                    Default is 10.
 
     Preconditions:
         - `r` must be between 2 and 16.
@@ -636,7 +649,7 @@ def modularMultiplication(x: str, y: str, m: str, r: int) -> str:
     return z
 
 
-def modularInversion(a: str, m: str, r: int) -> str:
+def modularInversion(a: str, m: str, r: int = 10) -> str:
     """
     Computes the modular inverse of a modulo m, if it exists.
 
@@ -644,6 +657,7 @@ def modularInversion(a: str, m: str, r: int) -> str:
         a (str): The number whose inverse is to be computed, as a string in radix r.
         m (str): The modulus as a string in radix r, must be greater than zero.
         r (int): The radix in which the numbers are expressed and the operation is performed, must be between 2 and 16.
+                    Default is 10.
 
     Preconditions:
         - `r` must be between 2 and 16.

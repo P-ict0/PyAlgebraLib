@@ -42,7 +42,7 @@ pip install PyAlgebraLib
 
 You can import the module:
 ```python
-import PyAlgebraLib as ap
+import PyAlgebraLib as pa
 ```
 
 Then, you can perform operations like:

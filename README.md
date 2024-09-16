@@ -47,7 +47,7 @@ import PyAlgebraLib as pa
 
 Then, you can perform operations like:
 ```python
-pa.karatsuba("364da","-13f", 16)      # Multiplication (karatsuba algorithm)
+pa.multiply("364da","-13f", 16)      # Multiplication (karatsuba algorithm)
 pa.extEuclid("-1460","44321521", 7)   # GCD (Extended)
 ```
 
@@ -66,7 +66,7 @@ pa.modularInversion("9a1aa8a02232", "a6a722a", 11)
 
     - Addition
     - Subtraction 
-    - Multiplication (Normal "primary school method" + Karatsuba algorithm)
+    - Multiplication (efficient recursive Karatsuba algorithm)
     - Division
     - GCD of 2 numbers (Extended Euclidean algorithm)
     - Modular Arithmetic:
@@ -89,7 +89,6 @@ pa.modularInversion("9a1aa8a02232", "a6a722a", 11)
 | add                    | x (str), y (str), r (int) = 10                                                             | str: Result of x + y in radix r                                   |
 | subtract               | x (str), y (str), r (int) = 10                                                             | str: Result of x - y in radix r                                   |
 | multiply               | x (str), y (str), r (int) = 10                                                             | str: Result of x * y in radix r                                   |
-| karatsuba              | x (str), y (str), r (int) = 10                                                             | str: Result of x * y using Karatsuba algorithm in radix r         |
 | extEuclid              | x (str), y (str), r (int) = 10                                                             | tuple: (gcd (str), a (str), b (str))                              |
 | modularReduction       | n (str), m (str), r (int) = 10                                                             | str: Result of n mod m in radix r                                 |
 | modularAddition        | x (str), y (str), m (str), r (int) = 10                                                    | str: Result of (x + y) mod m in radix r                           |
